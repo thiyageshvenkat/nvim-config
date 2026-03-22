@@ -35,3 +35,15 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- First, make sure the variable exists so we don't get a "nil" error
+vim.g.neovide_fullscreen = false
+
+-- Use a more robust toggle
+vim.keymap.set('n', '<F11>', function()
+    if vim.g.neovide then
+        vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+    else
+        print("Not running in Neovide!")
+    end
+end, { desc = "Toggle Fullscreen" })
