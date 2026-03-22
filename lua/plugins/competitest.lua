@@ -117,22 +117,8 @@ return {
         template_file = { cpp = tpl },
         evaluate_template_modifiers = true,
         received_problems_path = function(task, ext)
-          local judge, contest = split_group(task.group)
-          local name = sanitize(task.name or "problem")
-          local jlow = (judge or ""):lower()
-        
-          ensure_dir(cp_root)
-        
-          if jlow:find("usaco") then
-            local code = usaco_contest_code(contest)
-            local div = div_letter(task)
-            local num = prob_num(task)
-            return string.format("%s/%s-%s%s.%s", cp_root, code, div, num, ext)
-          end
-        
-          local clean_judge = sanitize(judge or "Unknown")
-          return string.format("%s/%s_%s.%s", cp_root, clean_judge, name, ext)
-        end,
+  return "/mnt/c/Users/ven12/usaco/ZZZ-TEST." .. ext
+end,
       })
     end,
   },
