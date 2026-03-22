@@ -18,7 +18,7 @@ local function usaco_contest_code(contest)
   elseif c:find("feb") then month_letter, roman = "F", "iii"
   elseif c:find("open") then month_letter, roman = "O", "iv"
   end
-  if y >= 2024 then return year .. roman end
+  if y >= 2026 then return year .. roman end
   return year .. month_letter
 end
 
@@ -120,17 +120,16 @@ return {
           local judge, contest = split_group(task.group)
           local name = sanitize(task.name or "problem")
           local jlow = (judge or ""):lower()
-          
+        
+          ensure_dir(cp_root)
+        
           if jlow:find("usaco") then
             local code = usaco_contest_code(contest)
             local div = div_letter(task)
             local num = prob_num(task)
-            local dir = string.format("%s/usaco/%s", cp_root, code)
-            ensure_dir(dir)
-            return string.format("%s/%s-%s%s.%s", dir, code, div, num, ext)
+            return string.format("%s/%s-%s%s.%s", cp_root, code, div, num, ext)
           end
-
-          ensure_dir(cp_root)
+        
           local clean_judge = sanitize(judge or "Unknown")
           return string.format("%s/%s_%s.%s", cp_root, clean_judge, name, ext)
         end,
