@@ -13,12 +13,21 @@ M.base46 = {
 	-- 	["@comment"] = { italic = true },
 	-- },
 }
+
+M.ui = {
+  statusline = {
+    -- Options: "default", "round", "block", "arrow", "minimal"
+    theme = "default", 
+    
+    -- In v3.0, "order" determines what is visible
+    order = { "mode", "file_info", "git", "%=", "lsp_msg", "diagnostics", "cursor" },
+    
+    -- This controls the separator icons between parts
+    separator_style = "round",
+  },
+}
+
+-- Keep your original require here if you need it
 require "custom.init"
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
 
 return M
